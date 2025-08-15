@@ -1,12 +1,15 @@
 import LightLogo from '@/assets/images/logo-light-theme.svg?react'
+import DarkLogo from '@/assets/images/logo-dark-theme.svg?react'
 import ThemeToggle from '@/components/ThemeToggle.tsx'
-// TODO import DarkLogo from '@/assets/images/logo-dark-theme.svg?react'
+import { useTheme } from '@/components/theme-provider.tsx'
 
 export default function Header() {
+  const { theme } = useTheme()
+
   return (
     <div className="flex justify-between">
       <div className="w-[184.4px]">
-        <LightLogo />
+        {theme === 'light' ? <LightLogo /> : <DarkLogo />}
       </div>
       <ThemeToggle />
     </div>
