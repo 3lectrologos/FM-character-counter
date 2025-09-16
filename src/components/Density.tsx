@@ -20,7 +20,7 @@ export default function Density({ text }: { text: string }) {
       <h2 className="txt-preset-2">Letter Density</h2>
       <div className="flex flex-col gap-150">
         {letterCounts.size === 0 ? (
-          <p className="txt-preset-4 text-neutral-600">
+          <p className="txt-preset-4 text-neutral-600 dark:text-neutral-200">
             No characters found. Start typing to see letter density.
           </p>
         ) : (
@@ -65,10 +65,10 @@ function LetterBar({
   const percentage = total > 0 ? (count / total) * 100 : 0
   return (
     <div className="flex items-center gap-[14px]">
-      <span className="w-4 txt-preset-4">{letter}</span>
+      <span className="w-4 shrink-0 txt-preset-4">{letter}</span>
       <Progress value={percentage} />
-      <span className="w-[90px] shrink-0 text-end txt-preset-4">
-        {count} ({percentage.toFixed(2) + '%'})
+      <span className="w-[90px] shrink-0 truncate text-end txt-preset-4">
+        {count} ({percentage.toFixed(1) + '%'})
       </span>
     </div>
   )

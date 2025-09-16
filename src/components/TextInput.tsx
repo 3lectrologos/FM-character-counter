@@ -26,7 +26,7 @@ export default function TextInput({
   const readingTime = countWords(text) / 200
   let readingTimeText = '0 minutes'
   if (readingTime > 0 && readingTime < 1) {
-    readingTimeText = '< 1 minute'
+    readingTimeText = '<1 minute'
   } else if (readingTime >= 1) {
     readingTimeText = `${Math.round(readingTime)} minute${Math.round(readingTime) > 1 ? 's' : ''}`
   }
