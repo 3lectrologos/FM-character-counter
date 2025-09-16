@@ -1,8 +1,14 @@
+'use client'
+
 import '@fontsource-variable/dm-sans'
 import Header from '@/components/Header.tsx'
 import TextInput from '@/components/TextInput.tsx'
+import { useState } from 'react'
+import Stats from '@/components/Stats.tsx'
 
 function App() {
+  const [text, setText] = useState('')
+
   return (
     <div className="flex min-h-dvh justify-center bg-[url('./assets/images/bg-light-theme.png')] bg-cover bg-repeat p-4 pb-8 dark:bg-[url('./assets/images/bg-dark-theme.png')]">
       <main className="flex w-full flex-col gap-500">
@@ -10,7 +16,8 @@ function App() {
         <p className="text-center txt-preset-1">
           Analyze your text in real-time.
         </p>
-        <TextInput />
+        <TextInput text={text} onChange={setText} />
+        <Stats text={text} />
       </main>
     </div>
   )
