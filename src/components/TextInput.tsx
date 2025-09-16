@@ -6,10 +6,22 @@ import { countWords } from '@/util.ts'
 
 export default function TextInput({
   text,
-  onChange,
+  onTextChange,
+  excludeSpaces,
+  onExcludeSpacesChange,
+  characterLimitEnabled,
+  onCharacterLimitEnabledChange,
+  characterLimit,
+  onCharacterLimitChange,
 }: {
   text: string
-  onChange: (text: string) => void
+  onTextChange: (text: string) => void
+  excludeSpaces: boolean
+  onExcludeSpacesChange: (checked: boolean) => void
+  characterLimitEnabled: boolean
+  onCharacterLimitEnabledChange: (checked: boolean) => void
+  characterLimit: number
+  onCharacterLimitChange: (limit: number) => void
 }) {
   const readingTime = countWords(text) / 200
   let readingTimeText = '0 minutes'
@@ -20,26 +32,41 @@ export default function TextInput({
   }
 
   return (
-    <div className="flex flex-col gap-200">
+    <div className="flex flex-col gap-250">
       <Textarea
         className="h-[200px] resize-none txt-preset-3"
         placeholder="Start typing here... (or paste your text)"
         value={text}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onTextChange(e.target.value)}
       />
       <div className="flex flex-col gap-150">
         <div className="flex items-center gap-2.5">
-          <Checkbox id="exclude-spaces" />
+          <Checkbox
+            id="exclude-spaces"
+            checked={excludeSpaces}
+            onCheckedChange={onExcludeSpacesChange}
+          />
           <Label className="txt-preset-4" htmlFor="exclude-spaces">
             Exclude Spaces
           </Label>
         </div>
-        <div className="flex items-center gap-2.5">
-          <Checkbox id="set-character-limit" />
+        <div className="flex h-8 items-center gap-2.5">
+          <Checkbox
+            id="set-character-limit"
+            checked={characterLimitEnabled}
+            onCheckedChange={onCharacterLimitEnabledChange}
+          />
           <Label className="pt-0.5 txt-preset-4" htmlFor="set-character-limit">
             Set Character Limit
           </Label>
-          <Input id="set-character-limit" type="number" />
+          {characterLimitEnabled && (
+            <Input
+              id="set-character-limit"
+              type="number"
+              value={characterLimit}
+              onChange={(e) => onCharacterLimitChange(Number(e.target.value))}
+            />
+          )}
         </div>
         <span className="txt-preset-4">Reading time: {readingTimeText}</span>
       </div>

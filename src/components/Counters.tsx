@@ -5,8 +5,16 @@ import characterCountPatternUrl from '@/assets/images/pattern-character-count.sv
 import wordCountPatternUrl from '@/assets/images/pattern-word-count.svg'
 import sentenceCountPatternUrl from '@/assets/images/pattern-sentence-count.svg'
 
-export default function Counters({ text }: { text: string }) {
-  const numCharacters = text.length
+export default function Counters({
+  text,
+  excludeSpaces,
+}: {
+  text: string
+  excludeSpaces?: boolean
+}) {
+  const numCharacters = excludeSpaces
+    ? text.replace(/\s+/g, '').length
+    : text.length
   const numWords = countWords(text)
   const numSentences = text.split(/[.!?]+\s+/).filter(Boolean).length
 
@@ -14,6 +22,7 @@ export default function Counters({ text }: { text: string }) {
     <div className="flex flex-col gap-200">
       <Counter
         label="Total Characters"
+        sublabel={excludeSpaces ? '(no spaces)' : undefined}
         value={numCharacters}
         patternUrl={characterCountPatternUrl}
         className="bg-purple-400"
@@ -36,11 +45,13 @@ export default function Counters({ text }: { text: string }) {
 
 function Counter({
   label,
+  sublabel,
   value,
   patternUrl,
   className,
 }: {
   label: string
+  sublabel?: string
   value: number
   patternUrl: string
   className?: string
@@ -54,8 +65,10 @@ function Counter({
         className
       )}
     >
-      <span className="txt-preset-1">{formattedValue}</span>
-      <span className="txt-preset-3">{label}</span>
+      <p className="txt-preset-1 dark:text-neutral-900">{formattedValue}</p>
+      <p className="txt-preset-3 dark:text-neutral-900">
+        {label} {sublabel && <span className="txt-preset-4">{sublabel}</span>}
+      </p>
       <img
         src={patternUrl}
         alt=""
