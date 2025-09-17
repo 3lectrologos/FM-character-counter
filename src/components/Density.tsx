@@ -9,7 +9,7 @@ const DEFAULT_DENSITY_LENGTH = 5
 
 export default function Density({ text }: { text: string }) {
   const [isExpanded, setIsExpanded] = useState(false)
-  const letterCounts = countLetters(text)
+  const { counts: letterCounts, total: letterTotal } = countLetters(text)
   const fullLetterCountArray = Array.from(letterCounts.entries())
   const displayedLetterCountArray = isExpanded
     ? fullLetterCountArray
@@ -29,7 +29,7 @@ export default function Density({ text }: { text: string }) {
               key={letter}
               letter={letter}
               count={count}
-              total={text.length}
+              total={letterTotal}
             />
           ))
         )}
