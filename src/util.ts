@@ -2,6 +2,10 @@ export function countWords(text: string): number {
   return text.trim() ? text.trim().split(/\s+/).length : 0
 }
 
+export function countCharacters(text: string, excludeSpaces: boolean): number {
+  return excludeSpaces ? text.replace(/\s+/g, '').length : text.length
+}
+
 export type LetterCountResult = {
   counts: Map<string, number>
   total: number
