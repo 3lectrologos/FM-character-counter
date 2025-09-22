@@ -19,25 +19,25 @@ export default function Counters({
   const numSentences = text.split(/[.!?]+\s+/).filter(Boolean).length
 
   return (
-    <div className="flex flex-col gap-200">
+    <div className="flex flex-col gap-200 tablet:flex-row">
       <Counter
         label="Total Characters"
         sublabel={excludeSpaces ? '(no spaces)' : undefined}
         value={numCharacters}
         patternUrl={characterCountPatternUrl}
-        className="bg-purple-400"
+        className="bg-purple-400 tablet:flex-1"
       />
       <Counter
         label="Word Count"
         value={numWords}
         patternUrl={wordCountPatternUrl}
-        className="bg-yellow-500"
+        className="bg-yellow-500 tablet:flex-1"
       />
       <Counter
         label="Sentence Count"
         value={numSentences}
         patternUrl={sentenceCountPatternUrl}
-        className="bg-orange-500"
+        className="bg-orange-500 tablet:flex-1"
       />
     </div>
   )
@@ -61,18 +61,20 @@ function Counter({
   return (
     <div
       className={cn(
-        'relative flex h-[130px] flex-col justify-center gap-100 overflow-hidden rounded-12 px-250',
+        'relative flex h-[130px] flex-col justify-center overflow-hidden rounded-12 px-250 tablet:h-[150px]',
         className
       )}
     >
-      <p className="txt-preset-1 dark:text-neutral-900">{formattedValue}</p>
-      <p className="txt-preset-3 dark:text-neutral-900">
-        {label} {sublabel && <span className="txt-preset-4">{sublabel}</span>}
-      </p>
+      <div className="z-10 flex flex-col gap-100">
+        <p className="txt-preset-1 dark:text-neutral-900">{formattedValue}</p>
+        <p className="txt-preset-3 dark:text-neutral-900">
+          {label} {sublabel && <span className="txt-preset-4">{sublabel}</span>}
+        </p>
+      </div>
       <img
         src={patternUrl}
         alt=""
-        className="absolute top-1/2 -right-[50px] h-[150px] w-[150px] -translate-y-1/2"
+        className="absolute top-1/2 -right-[50px] h-[150px] w-[150px] -translate-y-1/2 tablet:-right-[70px]"
       />
     </div>
   )

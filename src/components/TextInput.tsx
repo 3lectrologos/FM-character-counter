@@ -60,34 +60,39 @@ export default function TextInput({
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-150">
-        <div className="flex items-center gap-2.5">
-          <Checkbox
-            id="exclude-spaces"
-            checked={excludeSpaces}
-            onCheckedChange={onExcludeSpacesChange}
-          />
-          <Label className="txt-preset-4" htmlFor="exclude-spaces">
-            Exclude Spaces
-          </Label>
-        </div>
-        <div className="flex h-8 items-center gap-2.5">
-          <Checkbox
-            id="set-character-limit"
-            checked={characterLimitEnabled}
-            onCheckedChange={onCharacterLimitEnabledChange}
-          />
-          <Label className="pt-0.5 txt-preset-4" htmlFor="set-character-limit">
-            Set Character Limit
-          </Label>
-          {characterLimitEnabled && (
-            <Input
-              id="set-character-limit"
-              type="number"
-              value={characterLimit}
-              onChange={(e) => onCharacterLimitChange(Number(e.target.value))}
+      <div className="flex flex-col gap-150 tablet:flex-row tablet:justify-between">
+        <div className="flex flex-col gap-150 tablet:flex-row">
+          <div className="flex items-center gap-2.5">
+            <Checkbox
+              id="exclude-spaces"
+              checked={excludeSpaces}
+              onCheckedChange={onExcludeSpacesChange}
             />
-          )}
+            <Label className="txt-preset-4" htmlFor="exclude-spaces">
+              Exclude Spaces
+            </Label>
+          </div>
+          <div className="flex h-8 items-center gap-2.5">
+            <Checkbox
+              id="set-character-limit"
+              checked={characterLimitEnabled}
+              onCheckedChange={onCharacterLimitEnabledChange}
+            />
+            <Label
+              className="pt-0.5 txt-preset-4"
+              htmlFor="set-character-limit"
+            >
+              Set Character Limit
+            </Label>
+            {characterLimitEnabled && (
+              <Input
+                id="set-character-limit"
+                type="number"
+                value={characterLimit}
+                onChange={(e) => onCharacterLimitChange(Number(e.target.value))}
+              />
+            )}
+          </div>
         </div>
         <span className="txt-preset-4">Reading time: {readingTimeText}</span>
       </div>
