@@ -8,9 +8,11 @@ export default function Header() {
 
   return (
     <div className="flex justify-between">
-      <div className="w-[184.4px]">
-        {theme === 'light' ? <LightLogo /> : <DarkLogo />}
-      </div>
+      {theme === 'light' ? (
+        <LightLogo className="h-[30px] tablet:h-[40px]" />
+      ) : (
+        <DarkLogo className="h-[30px] tablet:h-[40px]" />
+      )}
       <ThemeToggle />
     </div>
   )

@@ -17,7 +17,7 @@ function App() {
     <div className="flex min-h-dvh justify-center bg-[url('./assets/images/bg-light-theme.png')] bg-cover bg-repeat p-200 pb-400 tablet:px-400 dark:bg-[url('./assets/images/bg-dark-theme.png')]">
       <main className="flex w-full max-w-[990px] flex-col gap-500 desktop:gap-600">
         <Header />
-        <p className="self-center text-center txt-preset-1 tablet:max-w-[520px] dark:text-neutral-100">
+        <p className="self-center text-center txt-preset-1 text-pretty tablet:max-w-[520px] dark:text-neutral-100">
           Analyze your text in real-time.
         </p>
         <TextInput

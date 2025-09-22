@@ -8,13 +8,13 @@ export default function ThemeToggle() {
 
   return (
     <Button
-      className="size-8 rounded-6 bg-neutral-100 px-0 py-0 hover:bg-neutral-100 dark:bg-neutral-700 dark:hover:bg-neutral-700"
+      className="size-8 rounded-6 bg-neutral-100 px-0 py-0 hover:bg-neutral-100 tablet:size-11 dark:bg-neutral-700 dark:hover:bg-neutral-700"
       onClick={() => (theme === 'dark' ? setTheme('light') : setTheme('dark'))}
     >
       {theme === 'light' ? (
-        <MoonIcon className="size-5" />
+        <MoonIcon className="size-5 tablet:size-[22px]" />
       ) : (
-        <SunIcon className="size-5" />
+        <SunIcon className="size-5 tablet:size-[22px]" />
       )}
     </Button>
   )
