@@ -67,6 +67,7 @@ export default function TextInput({
               id="exclude-spaces"
               checked={excludeSpaces}
               onCheckedChange={onExcludeSpacesChange}
+              aria-labelledby="exclude-spaces"
             />
             <Label className="txt-preset-4" htmlFor="exclude-spaces">
               Exclude Spaces
@@ -77,6 +78,7 @@ export default function TextInput({
               id="set-character-limit"
               checked={characterLimitEnabled}
               onCheckedChange={onCharacterLimitEnabledChange}
+              aria-labelledby="set-character-limit"
             />
             <Label
               className="pt-0.5 txt-preset-4"
